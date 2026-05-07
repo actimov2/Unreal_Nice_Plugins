@@ -8,4 +8,4 @@ reads this file to find the next incomplete sector. See
 |--------|-------|--------------|------------------------------------|--------------------------|-------------------------------------|
 | [x]    | M1.S1 | SamplePlugin | Add LogSamplePlugin startup log    | Unreal_Nice_Plugins-qkc  | docs/sectors/M1.S1-bootstrap.md     |
 | [x]    | M1.S2 | SamplePlugin | Tag v0.1.0 + AC2 rollback prep     | Unreal_Nice_Plugins-rff  | docs/sectors/M1.S2.md               |
-| [ ]    | M1.S3 | host         | Verify regenerate.ps1 post-edit    | Unreal_Nice_Plugins-c4u  | docs/sectors/M1.S3.md               |
+| [x]    | M1.S3 | host         | Verify regenerate.ps1 post-edit    | Unreal_Nice_Plugins-c4u  | docs/sectors/M1.S3.md               |
