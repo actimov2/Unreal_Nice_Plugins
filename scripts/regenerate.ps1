@@ -43,4 +43,4 @@ if ($LASTEXITCODE -ne 0) {
     throw "Build.bat exited with code $LASTEXITCODE"
 }
 
-Write-Host "✓ Done. Open HostProject.sln in Visual Studio." -ForegroundColor Green
+Write-Host "[OK] Done. Open HostProject.sln in Visual Studio." -ForegroundColor Green
