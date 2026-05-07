@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "ms-vscode.cpptools",
+    "ms-vscode.cpptools-extension-pack",
+    "ms-dotnettools.csharp",
+    "EditorConfig.EditorConfig",
+    "xaver.clang-format",
+    "ms-vscode.powershell",
+    "github.vscode-pull-request-github",
+    "github.vscode-github-actions",
+    "eamodio.gitlens"
+  ]
+}

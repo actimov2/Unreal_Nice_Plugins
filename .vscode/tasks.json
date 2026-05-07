@@ -1,0 +1,150 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "UE: Regenerate project files",
+      "type": "shell",
+      "command": "${env:UE_ROOT}\\Engine\\Build\\BatchFiles\\Build.bat",
+      "args": [
+        "-projectfiles",
+        "-project=${workspaceFolder}\\HostProject\\HostProject.uproject",
+        "-game",
+        "-rocket",
+        "-progress"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": "$msCompile",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true
+      }
+    },
+    {
+      "label": "UE: Build HostProject (Editor, Dev)",
+      "type": "shell",
+      "command": "${env:UE_ROOT}\\Engine\\Build\\BatchFiles\\Build.bat",
+      "args": [
+        "HostProjectEditor",
+        "Win64",
+        "Development",
+        "-Project=${workspaceFolder}\\HostProject\\HostProject.uproject",
+        "-WaitMutex",
+        "-FromMsBuild"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": "$msCompile",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "clear": true
+      }
+    },
+    {
+      "label": "UE: Rebuild HostProject (Editor, Dev)",
+      "type": "shell",
+      "command": "${env:UE_ROOT}\\Engine\\Build\\BatchFiles\\Rebuild.bat",
+      "args": [
+        "HostProjectEditor",
+        "Win64",
+        "Development",
+        "-Project=${workspaceFolder}\\HostProject\\HostProject.uproject",
+        "-WaitMutex",
+        "-FromMsBuild"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": "$msCompile",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "clear": true
+      }
+    },
+    {
+      "label": "UE: Clean HostProject",
+      "type": "shell",
+      "command": "${env:UE_ROOT}\\Engine\\Build\\BatchFiles\\Clean.bat",
+      "args": [
+        "HostProjectEditor",
+        "Win64",
+        "Development",
+        "-Project=${workspaceFolder}\\HostProject\\HostProject.uproject"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "UE: Open HostProject in Editor",
+      "type": "shell",
+      "command": "${env:UE_ROOT}\\Engine\\Binaries\\Win64\\UnrealEditor.exe",
+      "args": [
+        "${workspaceFolder}\\HostProject\\HostProject.uproject"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared"
+      },
+      "isBackground": true
+    },
+    {
+      "label": "Plugin: New plugin (interactive)",
+      "type": "shell",
+      "command": "powershell.exe",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy", "Bypass",
+        "-File", "${workspaceFolder}\\scripts\\new-plugin.ps1"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
+    },
+    {
+      "label": "Git: Update all submodules",
+      "type": "shell",
+      "command": "git",
+      "args": ["submodule", "update", "--init", "--recursive", "--remote"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    }
+  ]
+}

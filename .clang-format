@@ -1,0 +1,102 @@
+# Epic / Unreal Engine 5 coding standard
+# Reference: https://docs.unrealengine.com/5.6/en-US/epic-cplusplus-coding-standard-for-unreal-engine/
+
+BasedOnStyle: LLVM
+Language: Cpp
+Standard: c++20
+
+# Indentation — UE uses tabs (4-wide)
+UseTab: Always
+TabWidth: 4
+IndentWidth: 4
+ContinuationIndentWidth: 4
+ConstructorInitializerIndentWidth: 4
+
+# Braces — Allman style (UE convention)
+BreakBeforeBraces: Allman
+Cpp11BracedListStyle: true
+
+# Line length
+ColumnLimit: 120
+
+# Pointer / reference alignment — UE puts * and & next to type
+PointerAlignment: Left
+ReferenceAlignment: Left
+DerivePointerAlignment: false
+
+# Spacing
+SpaceAfterCStyleCast: false
+SpaceAfterTemplateKeyword: false
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCpp11BracedList: false
+SpaceBeforeCtorInitializerColon: true
+SpaceBeforeInheritanceColon: true
+SpaceBeforeParens: ControlStatements
+SpaceBeforeRangeBasedForLoopColon: true
+SpaceInEmptyParentheses: false
+SpacesBeforeTrailingComments: 1
+SpacesInAngles: false
+SpacesInCStyleCastParentheses: false
+SpacesInContainerLiterals: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+
+# Alignment
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+AlignEscapedNewlines: Right
+AlignOperands: true
+AlignTrailingComments: true
+
+# Breaking
+AllowAllArgumentsOnNextLine: true
+AllowAllParametersOfDeclarationOnNextLine: true
+AllowShortBlocksOnASingleLine: Empty
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLambdasOnASingleLine: All
+AllowShortLoopsOnASingleLine: false
+
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: false
+AlwaysBreakTemplateDeclarations: Yes
+
+BinPackArguments: true
+BinPackParameters: true
+
+BreakBeforeBinaryOperators: NonAssignment
+BreakBeforeTernaryOperators: true
+BreakConstructorInitializers: BeforeColon
+BreakInheritanceList: BeforeColon
+BreakStringLiterals: false
+
+# Constructor init list — one per line
+ConstructorInitializerAllOnOneLineOrOnePerLine: false
+PackConstructorInitializers: Never
+
+# Includes — keep order, UE has specific include conventions
+SortIncludes: false
+SortUsingDeclarations: false
+
+# Comments — preserve as written
+ReflowComments: false
+
+# Macros — UE uses lots of macros (UCLASS, GENERATED_BODY, etc.)
+MacroBlockBegin: ''
+MacroBlockEnd: ''
+
+# Namespace
+NamespaceIndentation: None
+CompactNamespaces: false
+FixNamespaceComments: true
+
+# Penalties — bias against breaking certain things
+PenaltyBreakAssignment: 1000
+PenaltyBreakBeforeFirstCallParameter: 100
+PenaltyBreakComment: 200
+PenaltyBreakFirstLessLess: 120
+PenaltyBreakString: 1000
+PenaltyExcessCharacter: 100
+PenaltyReturnTypeOnItsOwnLine: 1000

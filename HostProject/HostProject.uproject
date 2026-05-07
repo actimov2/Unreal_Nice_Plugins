@@ -1,0 +1,22 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "5.6",
+	"Category": "",
+	"Description": "Host project for testing Unreal_Nice_Plugins. Each plugin lives as a git submodule under Plugins/.",
+	"Modules": [
+		{
+			"Name": "HostProject",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "SamplePlugin",
+			"Enabled": true
+		}
+	]
+}

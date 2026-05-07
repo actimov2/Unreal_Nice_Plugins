@@ -1,0 +1,56 @@
+{
+  "C_Cpp.formatting": "clangFormat",
+  "C_Cpp.clang_format_style": "file",
+  "C_Cpp.clang_format_fallbackStyle": "LLVM",
+  "C_Cpp.default.cppStandard": "c++20",
+  "C_Cpp.default.intelliSenseMode": "windows-msvc-x64",
+
+  "editor.formatOnSave": true,
+  "editor.tabSize": 4,
+  "editor.insertSpaces": false,
+  "editor.detectIndentation": false,
+
+  "files.associations": {
+    "*.uplugin": "json",
+    "*.uproject": "json",
+    "*.Build.cs": "csharp",
+    "*.Target.cs": "csharp",
+    "*.usf": "hlsl",
+    "*.ush": "hlsl"
+  },
+
+  "files.exclude": {
+    "**/Binaries": true,
+    "**/Intermediate": true,
+    "**/DerivedDataCache": true,
+    "**/Saved": true,
+    "**/.vs": true,
+    "**/*.sln": true
+  },
+
+  "search.exclude": {
+    "**/Binaries": true,
+    "**/Intermediate": true,
+    "**/DerivedDataCache": true,
+    "**/Saved": true,
+    "**/Build": true
+  },
+
+  "files.eol": "\r\n",
+
+  "[markdown]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[json]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[powershell]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true
+  },
+
+  "git.detectSubmodules": true,
+  "git.autofetch": true
+}

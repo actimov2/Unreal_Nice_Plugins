@@ -1,0 +1,35 @@
+# EditorConfig: https://editorconfig.org
+# Ensures consistent coding style across editors and OS
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = crlf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = tab
+indent_size = 4
+
+# C++ / Unreal source files
+[*.{cpp,h,hpp,c,inl,cc,cxx}]
+indent_style = tab
+indent_size = 4
+
+# Unreal config & project files
+[*.{ini,uplugin,uproject,Target.cs,Build.cs}]
+indent_style = tab
+indent_size = 4
+
+# JSON / YAML / Markdown / scripts use spaces
+[*.{json,yml,yaml,md}]
+indent_style = space
+indent_size = 2
+
+[*.{ps1,sh}]
+indent_style = space
+indent_size = 4
+
+# Keep CRLF on Windows scripts even if edited on Mac/Linux
+[*.{bat,cmd,ps1}]
+end_of_line = crlf

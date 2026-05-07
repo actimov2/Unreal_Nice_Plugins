@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Attach to UnrealEditor",
+      "type": "cppvsdbg",
+      "request": "attach",
+      "processId": "${command:pickProcess}"
+    },
+    {
+      "name": "Launch UnrealEditor (HostProject)",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${env:UE_ROOT}\\Engine\\Binaries\\Win64\\UnrealEditor.exe",
+      "args": [
+        "${workspaceFolder}\\HostProject\\HostProject.uproject"
+      ],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "preLaunchTask": "UE: Build HostProject (Editor, Dev)"
+    }
+  ]
+}

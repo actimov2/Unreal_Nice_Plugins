@@ -1,0 +1,25 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "0.1.0",
+	"FriendlyName": "Sample Plugin",
+	"Description": "A minimal example plugin that adds a toolbar button to the Unreal Editor. Use as template for new plugins.",
+	"Category": "Editor",
+	"CreatedBy": "actimov2",
+	"CreatedByURL": "https://github.com/actimov2",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "https://github.com/actimov2/SamplePlugin/issues",
+	"EngineVersion": "5.6.0",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "SamplePlugin",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		}
+	]
+}
