@@ -27,7 +27,7 @@
       0   success (writes new SHA to stdout)
       20  precondition failure (path-guard, divergence, missing tag base)
 
-    See docs/VERSIONING.md §SemVer Tagging and §Branch Discipline.
+    See docs/VERSIONING.md sections SemVer Tagging and Branch Discipline.
 #>
 [CmdletBinding()]
 param(
@@ -41,7 +41,7 @@ param(
     [switch] $DryRun
 )
 
-$ErrorActionPreference = 'Stop'
+$ErrorActionPreference = 'Continue'  # script checks $LASTEXITCODE explicitly; git writes progress to stderr.
 
 # ---------------------------------------------------------------------------
 # Path-guard
@@ -102,7 +102,7 @@ if ($DryRun) {
 } else {
     & git -C $pluginPath merge --ff-only dev
     if ($LASTEXITCODE -ne 0) {
-        Write-Error "main has diverged from dev for plugin '$Plugin' — see docs/VERSIONING.md §Branch Discipline."
+        Write-Error "main has diverged from dev for plugin '$Plugin' -- see docs/VERSIONING.md (Branch Discipline)."
         exit 20
     }
 }
