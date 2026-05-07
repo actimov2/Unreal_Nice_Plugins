@@ -49,7 +49,7 @@ param(
     [switch] $DryRun
 )
 
-$ErrorActionPreference = 'Stop'
+$ErrorActionPreference = 'Continue'  # script checks $LASTEXITCODE explicitly; git writes progress to stderr.
 
 # ---------------------------------------------------------------------------
 # Path-guard (R2 mitigation): refuse to run anywhere other than host root.
@@ -68,15 +68,17 @@ if (-not (Test-Path $pluginPath)) {
 # Logging
 # ---------------------------------------------------------------------------
 $timestamp = (Get-Date -Format 'yyyyMMdd-HHmmss')
-$logDir    = '.omc/logs'
-if (-not (Test-Path $logDir)) { New-Item -ItemType Directory -Path $logDir -Force | Out-Null }
+# Use absolute paths via .NET API; PS 5.1 -LiteralPath misresolves relative
+# paths when cwd contains '[' or ']' (treats them as wildcards even with -Literal).
+$logDir    = [System.IO.Path]::GetFullPath((Join-Path $PWD.ProviderPath '.omc/logs'))
+if (-not [System.IO.Directory]::Exists($logDir)) { [System.IO.Directory]::CreateDirectory($logDir) | Out-Null }
 $logPath = Join-Path $logDir "sector-commit-$timestamp.log"
 
 function Write-Log {
     param([string] $Message, [string] $Level = 'INFO')
     $line = "[{0}] [{1}] {2}" -f (Get-Date -Format 's'), $Level, $Message
     Write-Host $line
-    Add-Content -Path $logPath -Value $line
+    [System.IO.File]::AppendAllText($logPath, $line + [Environment]::NewLine)
 }
 
 Write-Log "sector-commit start: Plugin=$Plugin SectorId=$SectorId BdId=$BdId DryRun=$DryRun"
@@ -112,7 +114,7 @@ if ($DryRun) {
 # Step 2 — push plugin/dev
 # ---------------------------------------------------------------------------
 Write-Log "Pushing $Plugin/dev to origin..."
-& git -C $pluginPath push origin dev 2>&1 | Tee-Object -FilePath $logPath -Append | Out-Null
+& git -C $pluginPath push origin dev 2>&1 | ForEach-Object { Write-Log "$_" 'CMD' }
 if ($LASTEXITCODE -ne 0) {
     Write-Log "Plugin push failed (exit $LASTEXITCODE). Host repo untouched." 'ERROR'
     exit 10
@@ -142,14 +144,14 @@ Write-Log "host preCommitSha = $preCommitSha"
 $prevHooksPath = (git config --get core.hooksPath) 2>$null
 git config core.hooksPath .git/hooks | Out-Null
 try {
-    & git add $pluginPath 2>&1 | Tee-Object -FilePath $logPath -Append | Out-Null
+    & git add $pluginPath 2>&1 | ForEach-Object { Write-Log "$_" 'CMD' }
     if ($LASTEXITCODE -ne 0) {
         Write-Log "git add failed (exit $LASTEXITCODE)." 'ERROR'
         exit 20
     }
 
     $msg = "pin: $Plugin@$pluginSha (sector $SectorId, bd:$BdId)"
-    & git commit -m $msg 2>&1 | Tee-Object -FilePath $logPath -Append | Out-Null
+    & git commit -m $msg 2>&1 | ForEach-Object { Write-Log "$_" 'CMD' }
     if ($LASTEXITCODE -ne 0) {
         Write-Log "git commit failed (exit $LASTEXITCODE). Likely no submodule pointer change to record." 'ERROR'
         exit 20
@@ -157,7 +159,7 @@ try {
 
     $hostBranch = (git rev-parse --abbrev-ref HEAD).Trim()
     Write-Log "Pushing host/$hostBranch to origin..."
-    & git push origin $hostBranch 2>&1 | Tee-Object -FilePath $logPath -Append | Out-Null
+    & git push origin $hostBranch 2>&1 | ForEach-Object { Write-Log "$_" 'CMD' }
     $pushExit = $LASTEXITCODE
 
     if ($pushExit -ne 0) {
@@ -165,7 +167,7 @@ try {
 
         # Critic amendment #2: fetch first; if upstream advanced since
         # $preCommitSha, refuse auto-reset.
-        & git fetch 2>&1 | Tee-Object -FilePath $logPath -Append | Out-Null
+        & git fetch 2>&1 | ForEach-Object { Write-Log "$_" 'CMD' }
         $upstream = (git rev-parse "$hostBranch@{u}" 2>$null).Trim()
         Write-Log "upstream=$upstream preCommitSha=$preCommitSha"
 
@@ -194,7 +196,7 @@ try {
 
         # Clean recovery: reset hard to preCommitSha (NEVER HEAD~1).
         Write-Log "Clean recovery: git reset --hard $preCommitSha"
-        & git reset --hard $preCommitSha 2>&1 | Tee-Object -FilePath $logPath -Append | Out-Null
+        & git reset --hard $preCommitSha 2>&1 | ForEach-Object { Write-Log "$_" 'CMD' }
         exit 12
     }
 }
@@ -210,7 +212,7 @@ finally {
 # Step 6 — close bd issue (only after both pushes succeeded)
 # ---------------------------------------------------------------------------
 Write-Log "Closing bd issue $BdId..."
-& bd close $BdId 2>&1 | Tee-Object -FilePath $logPath -Append | Out-Null
+& bd close $BdId 2>&1 | ForEach-Object { Write-Log "$_" 'CMD' }
 if ($LASTEXITCODE -ne 0) {
     Write-Log "bd close failed (exit $LASTEXITCODE). Host commit landed; resolve manually." 'WARN'
     # Both pushes succeeded; surface as non-fatal warning.
