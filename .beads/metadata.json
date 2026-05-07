@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "Unreal_Nice_Plugins",
+  "project_id": "6da1d997-7ae5-41a5-8290-1d0b6e9086d7"
+}

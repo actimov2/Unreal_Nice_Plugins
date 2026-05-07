@@ -50,3 +50,23 @@ desktop.ini
 .env
 .env.local
 *.local
+
+# ============================================================================
+# Beads (bd) — track issues, ignore the local SQLite DB
+# ============================================================================
+.beads/db/
+!.beads/issues/
+
+# ============================================================================
+# OMC runtime state — keep specs/plans/research, ignore ephemeral state/logs
+# ============================================================================
+.omc/state/
+.omc/logs/
+!.omc/specs/
+!.omc/plans/
+!.omc/research/
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
