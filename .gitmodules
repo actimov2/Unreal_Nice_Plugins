@@ -1,0 +1,3 @@
+[submodule "HostProject/Plugins/SamplePlugin"]
+	path = HostProject/Plugins/SamplePlugin
+	url = https://github.com/actimov2/SamplePlugin.git
