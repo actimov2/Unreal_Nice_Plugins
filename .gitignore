@@ -70,3 +70,7 @@ desktop.ini
 .dolt/
 *.db
 .beads-credential-key
+
+# OMC ephemeral state (per-machine, do not commit)
+.omc/sessions/
+.omc/project-memory.json
