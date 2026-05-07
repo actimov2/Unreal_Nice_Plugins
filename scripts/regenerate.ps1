@@ -20,7 +20,7 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$RepoRoot = (Resolve-Path "$PSScriptRoot\..").Path
+$RepoRoot = (Resolve-Path -LiteralPath "$PSScriptRoot\..").Path
 $UProject = Join-Path $RepoRoot "HostProject\HostProject.uproject"
 
 if (-not $EnginePath -or -not (Test-Path $EnginePath)) {
