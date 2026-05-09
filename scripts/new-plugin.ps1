@@ -41,7 +41,7 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$RepoRoot = (Resolve-Path "$PSScriptRoot\..").Path
+$RepoRoot = (Resolve-Path -LiteralPath "$PSScriptRoot\..").Path
 $Template = Join-Path $RepoRoot "HostProject\Plugins\SamplePlugin"
 $PluginsDir = Join-Path $RepoRoot "HostProject\Plugins"
 $TargetDir = Join-Path $PluginsDir $Name
@@ -50,10 +50,10 @@ $GitHubUser = "actimov2"
 # --- preflight ---
 Write-Host "==> Pre-flight checks" -ForegroundColor Cyan
 
-if (-not (Test-Path $Template)) {
+if (-not (Test-Path -LiteralPath $Template)) {
     throw "Template not found at $Template. Did you delete SamplePlugin?"
 }
-if (Test-Path $TargetDir) {
+if (Test-Path -LiteralPath $TargetDir) {
     throw "Folder already exists: $TargetDir"
 }
 foreach ($cmd in @('git', 'gh')) {
@@ -70,11 +70,14 @@ if ($LASTEXITCODE -ne 0) {
 # --- Step 1: copy template to temp ---
 $Temp = Join-Path $env:TEMP "uep_new_$Name`_$(Get-Random)"
 Write-Host "==> Copying template to $Temp" -ForegroundColor Cyan
-Copy-Item -Path $Template -Destination $Temp -Recurse
+Copy-Item -LiteralPath $Template -Destination $Temp -Recurse
 # clean any stray build output the template might have
 Get-ChildItem -Path $Temp -Recurse -Force -Directory `
     | Where-Object { $_.Name -in 'Binaries','Intermediate','Build','DerivedDataCache','Saved','.vs','.git' } `
     | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+# also remove any .git FILE (template was a submodule pointing at host .git/modules/...)
+Get-ChildItem -Path $Temp -Recurse -Force -File -Filter '.git' `
+    | Remove-Item -Force -ErrorAction SilentlyContinue
 
 # --- Step 2: rename SamplePlugin -> $Name in file contents and filenames ---
 Write-Host "==> Renaming SamplePlugin -> $Name" -ForegroundColor Cyan
@@ -114,15 +117,13 @@ Get-ChildItem -Path $Temp -Recurse -File `
 
 # --- Step 3: git init + initial commit ---
 Write-Host "==> Initializing git repo in $Temp" -ForegroundColor Cyan
-Push-Location $Temp
-try {
-    git init -b main 2>&1 | Out-Null
-    git add -A
-    git -c user.name="$GitHubUser" -c user.email="$GitHubUser@users.noreply.github.com" `
-        commit -m "Initial commit: $Name plugin scaffolded from SamplePlugin template" | Out-Null
-} finally {
-    Pop-Location
-}
+git -C $Temp init -b main
+if ($LASTEXITCODE -ne 0) { throw "git init failed in $Temp" }
+git -C $Temp add -A
+if ($LASTEXITCODE -ne 0) { throw "git add failed in $Temp" }
+git -C $Temp -c user.name="$GitHubUser" -c user.email="$GitHubUser@users.noreply.github.com" `
+    commit -m "Initial commit: $Name plugin scaffolded from SamplePlugin template" | Out-Null
+if ($LASTEXITCODE -ne 0) { throw "git commit failed in $Temp" }
 
 # --- Step 4: create GitHub repo ---
 $visibility = if ($Public) { '--public' } else { '--private' }
@@ -139,15 +140,12 @@ Write-Host "==> Removing temp folder" -ForegroundColor Cyan
 Remove-Item -Path $Temp -Recurse -Force
 
 Write-Host "==> Adding $Name as submodule" -ForegroundColor Cyan
-Push-Location $RepoRoot
-try {
-    git submodule add $RepoUrl "HostProject/Plugins/$Name"
-    git submodule update --init --recursive "HostProject/Plugins/$Name"
-    git add .gitmodules "HostProject/Plugins/$Name"
-    git commit -m "Add $Name plugin as submodule" | Out-Null
-} finally {
-    Pop-Location
-}
+git -C $RepoRoot submodule add $RepoUrl "HostProject/Plugins/$Name"
+if ($LASTEXITCODE -ne 0) { throw "git submodule add failed" }
+git -C $RepoRoot submodule update --init --recursive "HostProject/Plugins/$Name"
+git -C $RepoRoot add .gitmodules "HostProject/Plugins/$Name"
+git -C $RepoRoot commit -m "Add $Name plugin as submodule" | Out-Null
+if ($LASTEXITCODE -ne 0) { throw "git commit (host bootstrap) failed" }
 
 Write-Host ""
 Write-Host "✓ Done!" -ForegroundColor Green
