@@ -1,3 +1,6 @@
 [submodule "HostProject/Plugins/SamplePlugin"]
 	path = HostProject/Plugins/SamplePlugin
 	url = https://github.com/actimov2/SamplePlugin.git
+[submodule "HostProject/Plugins/OptimizePrime"]
+	path = HostProject/Plugins/OptimizePrime
+	url = https://github.com/actimov2/OptimizePrime.git
