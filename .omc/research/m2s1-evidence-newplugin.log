@@ -1,0 +1,26 @@
+PATH gh ok: C:\Program Files\GitHub CLI\gh.exe
+TEMP: C:\Users\Windows-10\AppData\Local\Temp
+==> Pre-flight checks
+==> Copying template to C:\Users\Windows-10\AppData\Local\Temp\uep_new_OptimizePrime_419039815
+==> Renaming SamplePlugin -> OptimizePrime
+==> Initializing git repo in C:\Users\Windows-10\AppData\Local\Temp\uep_new_OptimizePrime_419039815
+Initialized empty Git repository in C:/Users/Windows-10/AppData/Local/Temp/uep_new_OptimizePrime_419039815/.git/
+==> Creating GitHub repo actimov2/OptimizePrime (--private)
+https://github.com/actimov2/OptimizePrime
+To https://github.com/actimov2/OptimizePrime.git
+ * [new branch]      HEAD -> main
+branch 'main' set up to track 'origin/main'.
+==> Removing temp folder
+==> Adding OptimizePrime as submodule
+Cloning into 'E:/[Claude_Project]/Unreal_Nice_Plugins/HostProject/Plugins/OptimizePrime'...
+warning: in the working copy of '.gitmodules', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '.gitmodules', LF will be replaced by CRLF the next time Git touches it
+
+? Done!
+  Plugin:    HostProject\Plugins\OptimizePrime
+  GitHub:    https://github.com/actimov2/OptimizePrime.git
+
+Next steps:
+  1. Right-click HostProject\HostProject.uproject -> Generate Visual Studio project files
+  2. Open HostProject.uproject -> UE Editor will prompt to build
+  3. Add "OptimizePrime" to HostProject.uproject "Plugins" array if you want it enabled by default

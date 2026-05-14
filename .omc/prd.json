@@ -1,0 +1,90 @@
+{
+  "task": "M2.S1: OptimizePrime vertical slice (v0.1.0)",
+  "bdId": "Unreal_Nice_Plugins-q5m",
+  "plan": ".omc/plans/consensus-optimizeprime-m2s1.md",
+  "spec": ".omc/specs/deep-interview-optimizeprime-m2s1.md",
+  "stories": [
+    {
+      "id": "US-001",
+      "title": "P1 — Scaffold OptimizePrime submodule via new-plugin.ps1 + manual edits",
+      "passes": true,
+      "acceptanceCriteria": [
+        "Submodule exists at HostProject/Plugins/OptimizePrime/ with both 'main' and 'dev' branches (git -C ... branch --list shows both)",
+        "Remote points to https://github.com/actimov2/OptimizePrime.git (git remote -v)",
+        "OptimizePrime.uplugin parses as JSON, Modules[0].Name == 'OptimizePrime', VersionName == '0.1.0', CanContainContent == false, Category == 'Editor'",
+        "Source/OptimizePrime/OptimizePrime.Build.cs has exactly 10 deps: PublicDependencyModuleNames={Core}; PrivateDependencyModuleNames={CoreUObject, Engine, Slate, SlateCore, UnrealEd, ToolMenus, Projects, EditorFramework, InputCore}",
+        "Token replacement verified: Select-String 'FOptimizePrimeModule' Source/OptimizePrime/Private/OptimizePrime.cpp returns >=1 match; LogOptimizePrime present; IMPLEMENT_MODULE(FOptimizePrimeModule, OptimizePrime) present",
+        "OptimizePrime.cpp OnToolbarButtonClicked invokes FGlobalTabmanager::Get()->TryInvokeTab(FName('OptimizePrimePanel')) (no FMessageDialog)",
+        "Bootstrap-exception host commit (.gitmodules + submodule entry) landed on host branch by new-plugin.ps1"
+      ]
+    },
+    {
+      "id": "US-002",
+      "title": "P2 — Slate panel + report list + USTRUCTs (pure C++, no UMG)",
+      "passes": true,
+      "acceptanceCriteria": [
+        "File exists: Source/OptimizePrime/Private/UI/SOptimizePrimePanel.{h,cpp} — SCompoundWidget with _OnScanRequested delegate + _InitialMode arg, SButton 'Scan Scene', SCheckBox Artist/Advanced toggle, embedded SHeavinessReportList",
+        "File exists: Source/OptimizePrime/Private/UI/SHeavinessReportList.{h,cpp} — SCompoundWidget with internal SListView<TSharedPtr<FHeavinessRow>>, SetRows + SetMode, empty-state 'No static meshes found'",
+        "File exists: Source/OptimizePrime/Public/Report/OptimizePrimeReport.h — declares EHeavinessSeverity {Green,Yellow,Red}, EOptimizePrimeMode {Artist,Advanced}, USTRUCT FHeavinessRow {ActorLabel,MeshAssetName,VertexCount,Severity}, USTRUCT FOptimizePrimeReport {Timestamp, TArray<FHeavinessRow> Rows}",
+        "No .uasset, .uplugin CanContainContent stays false, no UMG/Blutility/EditorScriptingUtilities/DeveloperSettings deps in Build.cs"
+      ]
+    },
+    {
+      "id": "US-003",
+      "title": "P3 — AnalyzerService + MeshVertexProvider with null-guards",
+      "passes": true,
+      "acceptanceCriteria": [
+        "File exists: Source/OptimizePrime/Private/Analyzer/AnalyzerService.{h,cpp} — class FAnalyzerService with ScanWorld(UWorld*, int32 TopN=10) returning FOptimizePrimeReport; owns TUniquePtr<FMeshVertexProvider>",
+        "AnalyzerService::ScanWorld sorts by VertexCount desc, slices to TopN, stamps Timestamp=FDateTime::UtcNow()",
+        "File exists: Source/OptimizePrime/Private/Analyzer/MeshVertexProvider.{h,cpp} — free-standing class (no ICategoryProvider base); Scan(UWorld*, TArray<FHeavinessRow>&)",
+        "MeshVertexProvider.cpp has static constexpr int32 SeverityYellow = 50000; SeverityRed = 250000;",
+        "MeshVertexProvider::Scan null-guards GetRenderData() AND LODResources.Num() > 0: 'const FStaticMeshRenderData* RD = SM->GetRenderData(); if (!RD || RD->LODResources.Num() == 0) { continue; }'",
+        "Severity classification: Green if <SeverityYellow, Yellow if <SeverityRed, else Red",
+        "Skipped actors logged at Verbose"
+      ]
+    },
+    {
+      "id": "US-004",
+      "title": "P4 — Wiring (StartupModule + tab spawner + scan delegate + LogOptimizePrime)",
+      "passes": true,
+      "acceptanceCriteria": [
+        "OptimizePrime.cpp StartupModule logs UE_LOG(LogOptimizePrime, Log, TEXT('LogOptimizePrime started')) at the very top",
+        "StartupModule instantiates AnalyzerService = MakeUnique<FAnalyzerService>()",
+        "Tab spawner registered via FGlobalTabmanager::Get()->RegisterNomadTabSpawner(FName('OptimizePrimePanel'), ...) with display name 'OptimizePrime'",
+        "SpawnPanel returns SDockTab containing SOptimizePrimePanel; OnScanRequested lambda calls AnalyzerService->ScanWorld(GEditor->GetEditorWorldContext().World()) with null-guard",
+        "OptimizePrime.h adds forward decls for FAnalyzerService, SOptimizePrimePanel, SDockTab, FSpawnTabArgs and members TUniquePtr<FAnalyzerService> AnalyzerService + TSharedPtr<SOptimizePrimePanel> Panel",
+        "Headless context (null world): button no-ops + logs Warning"
+      ]
+    },
+    {
+      "id": "US-005",
+      "title": "P5 — Self-sufficient sector doc + MILESTONES + plugin dev commit (architect-verifier gate)",
+      "passes": true,
+      "acceptanceCriteria": [
+        "docs/sectors/M2.S1.md exists with: Plugin, Preconditions, DoD (10 ACs distilled to 6), Verification (7 steps), Tag Bump, ACs Touched, Notes, AND inlined: (a) full file table P1-P4, (b) Build.cs 10-dep list, (c) severity constexprs SeverityYellow=50000 SeverityRed=250000, (d) USTRUCT defs, (e) P6 verification verbatim, (f) bd-id Unreal_Nice_Plugins-q5m + bd create block, (g) MeshVertexProvider null-guard snippet 'const FStaticMeshRenderData* RD = SM->GetRenderData(); if (!RD || RD->LODResources.Num() == 0) { continue; }'",
+        "Self-sufficiency check: Select-String 'SeverityYellow = 50000', 'FHeavinessRow', 'LODResources.Num\\(\\) == 0' against M2.S1.md each return >=1 match",
+        "planning/MILESTONES.md has new row: | [ ] | M2.S1 | OptimizePrime | Vertical slice ... | Unreal_Nice_Plugins-q5m | docs/sectors/M2.S1.md |",
+        "planning/TASK_ASSIGNMENTS.md updated with M2.S1 ownership",
+        "architect-verifier reviewed: 10-dep Build.cs, absence of ICategoryProvider, FOptimizePrimeReport USTRUCT contract, MeshVertexProvider null-guards, OptimizePrime.cpp StartupModule wiring — verdict APPROVED",
+        "Single atomic plugin commit on dev: 'M2.S1: vertical slice — Slate panel + Slate list + MeshVertexProvider' (git -C HostProject/Plugins/OptimizePrime log -1 --oneline)"
+      ]
+    },
+    {
+      "id": "US-006",
+      "title": "P6 — Regenerate + editor smoke + sector-commit.ps1 + tag v0.1.0",
+      "passes": false,
+      "humanInLoop": true,
+      "acceptanceCriteria": [
+        "scripts/regenerate.ps1 exits 0 from host root; HostProject.sln contains OptimizePrime project (AC3)",
+        "Editor compiles + opens; Saved/Logs/HostProject.log contains 'LogOptimizePrime started' (AC8)",
+        "UI smoke (HUMAN): toolbar button opens 'OptimizePrime' tab; tab shows Scan Scene + Artist/Advanced toggle + empty list with 'No static meshes found' (AC4, AC5)",
+        "Functional smoke (HUMAN): in level with >=10 AStaticMeshActors, Scan Scene populates list top-10 desc with severity badges; toggle changes visual; empty level → empty state (AC6, AC7)",
+        "Evidence saved to .omc/research/m2s1-evidence/: populated.png, empty.png, log-tail.txt",
+        "Editor closed: Get-Process UnrealEditor returns null",
+        "scripts/sector-commit.ps1 -Plugin OptimizePrime -SectorId M2.S1 -BdId Unreal_Nice_Plugins-q5m exits 0; both pushes (plugin dev + host pin) succeed; bd close Unreal_Nice_Plugins-q5m happens (AC9)",
+        "MILESTONES.md M2.S1 row flipped from [ ] to [x] (AC10)",
+        "scripts/plugin-version.ps1 -Plugin OptimizePrime -Bump minor exits 0; FF-merge dev→main inside submodule + tag v0.1.0; git -C HostProject/Plugins/OptimizePrime tag --list contains v0.1.0 (AC1 tag requirement)"
+      ]
+    }
+  ]
+}

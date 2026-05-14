@@ -1,0 +1,100 @@
+[2026.05.11-15.32.00:139][120]LogStreaming: Display: FlushAsyncLoading(671): 1 QueuedPackages, 0 AsyncPackages
+[2026.05.11-15.32.00:817][123]LogStaticMesh: Display: Building static mesh Fanal_Laurisilva_Leaves_dtre_Raw (Required Memory Estimate: 303.376496 MB)...
+[2026.05.11-15.32.01:912][126]LogStaticMesh: Built static mesh [1.09s] /Game/Fab/Fanal_Forest_Silver_Laurel_Tree/Fanal_Laurisilva_Leaves_dtre_Raw.Fanal_Laurisilva_Leaves_dtre_Raw
+[2026.05.11-15.32.02:812][128]LogInterchangeEngine: Display: Interchange import completed [C:/Users/Windows-10/...ilva_Leaves_dtre_Raw/Fanal_Laurisilva_Leaves_dtre_Raw.fbx]
+[2026.05.11-15.32.02:814][128]LogInterchangeEngine: Display: Interchange start importing source [C:/Users/Windows-10/AppData/Local/Temp/FabLibrary/42998e76-287b-401b-8f2e-f87b6faa3843/fanal_laurisilva_woodsorrel_dtre_raw_extracted/Fanal_Laurisilva_SpadeLeaf_dtre_Raw/Fanal_Laurisilva_SpadeLeaf_dtre_Raw.fbx]
+[2026.05.11-15.32.04:139][132]LogStreaming: Display: FlushAsyncLoading(672): 1 QueuedPackages, 0 AsyncPackages
+[2026.05.11-15.32.04:807][134]LogStreaming: Display: FlushAsyncLoading(673): 1 QueuedPackages, 0 AsyncPackages
+[2026.05.11-15.32.05:165][135]LogStaticMesh: Display: Building static mesh Fanal_Laurisilva_SpadeLeaf_dtre_Raw (Required Memory Estimate: 25.828428 MB)...
+[2026.05.11-15.32.05:310][136]LogStaticMesh: Built static mesh [0.15s] /Game/Fab/Fanal_Forest_Silver_Laurel_Tree/Fanal_Laurisilva_SpadeLeaf_dtre_Raw.Fanal_Laurisilva_SpadeLeaf_dtre_Raw
+[2026.05.11-15.32.05:478][136]LogInterchangeEngine: Display: Interchange import completed [C:/Users/Windows-10/...a_SpadeLeaf_dtre_Raw/Fanal_Laurisilva_SpadeLeaf_dtre_Raw.fbx]
+[2026.05.11-15.32.05:478][136]LogInterchangeEngine: Display: Interchange start importing source [C:/Users/Windows-10/AppData/Local/Temp/FabLibrary/42998e76-287b-401b-8f2e-f87b6faa3843/fanal_laurisilva_woodsorrel_dtre_raw_extracted/Fanal_Laurisilva_Tree_dtre_Raw/Fanal_Laurisilva_Tree_dtre_Raw.fbx]
+[2026.05.11-15.32.06:806][140]LogStreaming: Display: FlushAsyncLoading(674): 1 QueuedPackages, 0 AsyncPackages
+[2026.05.11-15.32.12:835][142]LogStreaming: Display: FlushAsyncLoading(675): 1 QueuedPackages, 0 AsyncPackages
+[2026.05.11-15.32.14:952][145]LogStaticMesh: Display: Building static mesh Fanal_Laurisilva_Tree_dtre_Raw (Required Memory Estimate: 2268.626296 MB)...
+[2026.05.11-15.32.21:367][164]LogStaticMesh: Built static mesh [6.42s] /Game/Fab/Fanal_Forest_Silver_Laurel_Tree/Fanal_Laurisilva_Tree_dtre_Raw.Fanal_Laurisilva_Tree_dtre_Raw
+[2026.05.11-15.32.23:897][171]LogInterchangeEngine: Display: Interchange import completed [C:/Users/Windows-10/...isilva_Tree_dtre_Raw/Fanal_Laurisilva_Tree_dtre_Raw.fbx]
+[2026.05.11-15.32.23:898][171]LogInterchangeEngine: Display: Interchange start importing source [C:/Users/Windows-10/AppData/Local/Temp/FabLibrary/42998e76-287b-401b-8f2e-f87b6faa3843/fanal_laurisilva_woodsorrel_dtre_raw_extracted/Fanal_Laurisilva_Twigs_dtre_Raw/Fanal_Laurisilva_Twigs_dtre_Raw.fbx]
+[2026.05.11-15.32.25:561][176]LogStreaming: Display: FlushAsyncLoading(676): 1 QueuedPackages, 0 AsyncPackages
+[2026.05.11-15.32.30:086][178]LogStreaming: Display: FlushAsyncLoading(677): 1 QueuedPackages, 0 AsyncPackages
+[2026.05.11-15.32.31:568][181]LogStaticMesh: Display: Building static mesh Fanal_Laurisilva_Twigs_dtre_Raw (Required Memory Estimate: 1535.691303 MB)...
+[2026.05.11-15.32.35:682][193]LogStaticMesh: Built static mesh [4.11s] /Game/Fab/Fanal_Forest_Silver_Laurel_Tree/Fanal_Laurisilva_Twigs_dtre_Raw.Fanal_Laurisilva_Twigs_dtre_Raw
+[2026.05.11-15.32.37:523][198]LogInterchangeEngine: Display: Interchange import completed [C:/Users/Windows-10/...silva_Twigs_dtre_Raw/Fanal_Laurisilva_Twigs_dtre_Raw.fbx]
+[2026.05.11-15.32.37:523][198]LogInterchangeEngine: Display: Interchange start importing source [C:/Users/Windows-10/AppData/Local/Temp/FabLibrary/42998e76-287b-401b-8f2e-f87b6faa3843/fanal_laurisilva_woodsorrel_dtre_raw_extracted/Fanal_Laurisilva_WoodSorrel_dtre_Raw/Fanal_Laurisilva_WoodSorrel_dtre_Raw.fbx]
+[2026.05.11-15.32.38:847][202]LogStreaming: Display: FlushAsyncLoading(678): 1 QueuedPackages, 0 AsyncPackages
+[2026.05.11-15.32.39:514][204]LogStreaming: Display: FlushAsyncLoading(679): 1 QueuedPackages, 0 AsyncPackages
+[2026.05.11-15.32.40:187][207]LogStaticMesh: Display: Building static mesh Fanal_Laurisilva_WoodSorrel_dtre_Raw (Required Memory Estimate: 102.959907 MB)...
+[2026.05.11-15.32.40:926][209]LogStaticMesh: Built static mesh [0.74s] /Game/Fab/Fanal_Forest_Silver_Laurel_Tree/Fanal_Laurisilva_WoodSorrel_dtre_Raw.Fanal_Laurisilva_WoodSorrel_dtre_Raw
+[2026.05.11-15.32.41:188][209]LogInterchangeEngine: Display: Interchange import completed [C:/Users/Windows-10/..._WoodSorrel_dtre_Raw/Fanal_Laurisilva_WoodSorrel_dtre_Raw.fbx]
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: ================================================
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: === FShaderJobCache stats ===
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Total job queries 434, among them cache hits 120 (27.65%), DDC hits 270 (62.21%), Duplicates 10 (2.30%)
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Tracking 304 distinct input hashes that result in 243 distinct outputs (79.93%)
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: RAM used: 1.38 MiB of 6.40 GiB budget. Usage: 0.02%
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: === Shader Compilation stats ===
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Shaders Compiled: 34
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Jobs assigned 34, completed 34 (100%)
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Average time worker was idle: 98.74 s
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Time job spent in pending queue: average 0.66 s, longest 2.25 s
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Job execution time: average 1.65 s, max 2.67 s
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Job life time (pending + execution): average 2.31 s, max 4.39
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Shader code size: total 209.473 KiB, numShaders 38, average 5.512 KiB, min 284 B, max 12.047 KiB
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Time at least one job was in flight (either pending or executed): 8.81 s
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Mutex wait stall in FShaderJobCache::SubmitJobs:  0.02%
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Jobs were issued in 34 batches (only local compilation was used), average 1.00 jobs/batch
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Average processing rate: 3.86 jobs/sec
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Total thread time: 38.596 s
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Total thread preprocess time: 8.646 s
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Percentage time preprocessing: 22.40%
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Effective parallelization: 4.38 (times faster than compiling all shaders on one thread). Compare with number of workers: 16 - 0.273710
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Top 5 most expensive shader types by average time:
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display:                         TBasePassPSFNoLightMapPolicySkylight (compiled    6 times, average 1.47 sec, max 1.63 sec, min 1.29 sec)
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display:                                                 FDepthOnlyPS (compiled    2 times, average 1.39 sec, max 1.40 sec, min 1.39 sec)
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display:                  TShadowDepthVSVertexShadowDepth_OutputDepth (compiled    2 times, average 1.27 sec, max 1.39 sec, min 1.15 sec)
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display:            TShadowDepthVSVertexShadowDepth_OnePassPointLight (compiled    2 times, average 1.09 sec, max 1.11 sec, min 1.07 sec)
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display:                                                  FVelocityPS (compiled    2 times, average 1.07 sec, max 1.38 sec, min 0.76 sec)
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Top 5 shader types by total compile time:
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display:                         TBasePassPSFNoLightMapPolicySkylight - 22.80% of total time (compiled    6 times, average 1.47 sec, max 1.63 sec, min 1.29 sec)
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display:                                 TBasePassVSFNoLightMapPolicy - 20.84% of total time (compiled    8 times, average 1.01 sec, max 1.32 sec, min 0.38 sec)
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display:                                                 FDepthOnlyPS - 7.22% of total time (compiled    2 times, average 1.39 sec, max 1.40 sec, min 1.39 sec)
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display:                  TShadowDepthVSVertexShadowDepth_OutputDepth - 6.58% of total time (compiled    2 times, average 1.27 sec, max 1.39 sec, min 1.15 sec)
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display:                                 TBasePassPSFNoLightMapPolicy - 6.17% of total time (compiled    4 times, average 0.60 sec, max 0.62 sec, min 0.56 sec)
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: === Material stats ===
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Materials Cooked:        0
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Materials Translated:    184
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Material Total Translate Time: 0.28 s
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Material Translation Only: 0.12 s (41%)
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Material DDC Serialization Only: 0.00 s (0%)
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: Material Cache Hits: 20 (11%)
+[2026.05.11-15.32.54:064][324]LogShaderCompilers: Display: ================================================
+[2026.05.11-15.34.49:824][543]LogSlate: Window 'OptimizePrime' being destroyed
+[2026.05.11-15.34.49:832][543]LogSlate: Window 'OptimizePrime' being destroyed
+[2026.05.11-15.34.51:385][708]LogStreaming: Display: FlushAsyncLoading(680): 1 QueuedPackages, 0 AsyncPackages
+[2026.05.11-15.34.52:470][708]LogSlate: Window 'New Level' being destroyed
+[2026.05.11-15.34.52:479][708]Cmd: MAP LOAD FILE="../../../Engine/Content/Maps/Templates/Template_Default.umap" TEMPLATE=1 SHOWPROGRESS=1 FEATURELEVEL=3
+[2026.05.11-15.34.57:002][708]LogWorld: UWorld::CleanupWorld for Props_Showcase, bSessionEnded=true, bCleanupResources=true
+[2026.05.11-15.34.57:002][708]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2026.05.11-15.34.57:084][708]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2026.05.11-15.34.57:173][708]LogUObjectHash: Compacting FUObjectHashTables data took   1.23ms
+[2026.05.11-15.34.57:255][708]LogAudio: Display: Audio Device (ID: 1) registered with world 'Untitled_2'.
+[2026.05.11-15.34.57:255][708]LogChaosDD: Creating Chaos Debug Draw Scene for world Untitled_2
+[2026.05.11-15.34.57:268][708]LogEditorServer: Finished looking for orphan Actors (0.000 secs)
+[2026.05.11-15.34.57:348][708]LogUObjectHash: Compacting FUObjectHashTables data took   0.53ms
+[2026.05.11-15.34.57:366][708]Cmd: MAP CHECKDEP NOCLEARLOG
+[2026.05.11-15.34.57:366][708]MapCheck: Map check complete: 0 Error(s), 0 Warning(s), took 0.095ms to complete.
+[2026.05.11-15.35.03:171][220]LogSlate: Window 'OptimizePrime' being destroyed
+[2026.05.11-15.35.03:177][220]LogSlate: Window 'OptimizePrime' being destroyed
+[2026.05.11-15.35.06:041][413]LogSlate: Window 'New Level' being destroyed
+[2026.05.11-15.35.07:526][413]LogWorld: UWorld::CleanupWorld for Untitled_2, bSessionEnded=true, bCleanupResources=true
+[2026.05.11-15.35.07:526][413]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2026.05.11-15.35.07:599][413]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2026.05.11-15.35.07:602][413]LogUObjectHash: Compacting FUObjectHashTables data took   0.56ms
+[2026.05.11-15.35.07:606][413]LogChaosDD: Creating Chaos Debug Draw Scene for world Untitled
+[2026.05.11-15.35.07:612][413]LogAudio: Display: Audio Device (ID: 1) registered with world 'Untitled'.
+[2026.05.11-15.37.10:965][347]LogEOSSDK: LogEOS: Updating Product SDK Config, Time: 4222.422852
+[2026.05.11-15.37.11:965][350]LogEOSSDK: LogEOS: SDK Config Product Update Request Completed - No Change
+[2026.05.11-15.37.11:965][350]LogEOSSDK: LogEOS: ScheduleNextSDKConfigDataUpdate - Time: 4223.089355, Update Interval: 329.416779
+[2026.05.11-15.37.23:435][385]LogWindowsTextInputMethodSystem: Activated input method: Thai (Thailand) - (Keyboard).
+[2026.05.11-15.37.23:435][385]LogWindowsTextInputMethodSystem: Activated input method: Thai (Thailand) - (Keyboard).
+[2026.05.11-15.37.23:626][385]LogSlate: Window 'OptimizePrime' being destroyed
+[2026.05.11-15.37.23:632][385]LogSlate: Window 'OptimizePrime' being destroyed
