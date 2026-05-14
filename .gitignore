@@ -45,6 +45,14 @@ desktop.ini
 !*.uplugin
 
 # ============================================================================
+# Third-party marketplace / Fab assets — imported locally for testing only.
+# Re-import from Fab when needed; too large for git, not project-owned.
+# ============================================================================
+HostProject/Content/Fab/
+HostProject/Content/Megaplant_Library/
+HostProject/Content/Modular_Rural_Cabin/
+
+# ============================================================================
 # Local-only secrets
 # ============================================================================
 .env
