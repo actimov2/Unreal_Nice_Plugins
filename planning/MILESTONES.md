@@ -11,4 +11,4 @@ reads this file to find the next incomplete sector. See
 | [x]    | M1.S3 | host         | Verify regenerate.ps1 post-edit    | Unreal_Nice_Plugins-c4u  | docs/sectors/M1.S3.md               |
 | [x]    | M2.S1 | OptimizePrime | Vertical slice: scaffold + Slate panel + Slate list + MeshVertexProvider | Unreal_Nice_Plugins-q5m | docs/sectors/M2.S1.md |
 | [ ]    | M2.S2 | OptimizePrime | Extensibility pass: extract ICategoryProvider + add FNaniteEligibilityProvider + promote thresholds to UDeveloperSettings | Unreal_Nice_Plugins-TBD | docs/sectors/M2.S2.md |
-| [ ]    | M2.S3 | OptimizePrime | Log Scanner panel: live log + crash folder + categorized warnings + markdown export | Unreal_Nice_Plugins-TBD | docs/sectors/M2.S3.md |
+| [ ]    | M2.S3 | OptimizePrime | Log Scanner panel: live log + crash folder + categorized warnings + markdown export | Unreal_Nice_Plugins-3js | docs/sectors/M2.S3.md |
